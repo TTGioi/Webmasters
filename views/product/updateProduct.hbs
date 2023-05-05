@@ -1,0 +1,26 @@
+<form action="/addProduct" method="post" enctype="multipart/form-data">
+ <input name="id" type="text" class="form-control" value="{{id}}" style="display: none;" readonly>
+    <div class="form-group">
+        <label for="name">Tên sản phẩm:</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{product1.name}}" required />
+    </div>
+    <div class="form-group">
+        <label for="price">Giá:</label>
+        <input type="number" class="form-control" id="price" name="price" value="{{product1.price}}" required />
+    </div>
+    <div class="form-group">
+        <label for="color">Màu:</label>
+        <input type="text" class="form-control" id="color" name="color" value="{{product1.color}}" required />
+    </div>
+    <label class="mt-2" for="image">Ảnh sản phẩm:</label>
+    <div class="form-group mt-3">
+        <img id="image-preview" src="uploads/{{product1.image}}" width="150px" height="150px">
+        <input type="file" id="form3Example4" name="image" class="form-control mt-3" accept="image/*"
+            onchange="previewImage(event)" />
+    </div>
+    <input  name="image2" id="form3Example4" value="{{product1.image}}" style="display: none;" class="form-control mt-3"/>
+    <div class="form-group mt-3">
+        <button type="submit" class="btnAdd btn-primary">Update</button>
+    </div>
+
+</form>

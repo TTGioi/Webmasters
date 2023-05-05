@@ -1,0 +1,51 @@
+{{#if successAdd}}
+<div class="alert alert-success" role="alert">
+    Thêm Thành Công
+</div>
+{{/if}}
+<form action="/addUser" method="post" enctype="multipart/form-data">
+    <!-- 2 column grid layout with text inputs for the first and last names -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example1">Name</label>
+        <input type="text" id="form3Example1" name="name" class="form-control" required />
+
+    </div>
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Email address</label>
+        <input type="email" id="form3Example3" name="email" class="form-control" required />
+    </div>
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form3Example4">Password</label>
+        <input type="text" id="form3Example4" name="password" class="form-control" required />
+
+    </div>
+    <div>
+        <label class="form-label" for="form3Example4">Image</label>
+    </div>
+    <div class="form-outline mb-4">
+        <img id="image-preview" width="150" height="150">
+        <input type="file" id="form3Example4" name="image" class="form-control mt-3" accept="image/*" required
+            onchange="previewImage(event)" />
+    </div>
+    <div>
+        <label class="form-label" for="form3Example">Role</label>
+    </div>
+    <div class="form-check-inline mb-4">
+        <input class="form-check-input" value="User" type="radio" name="role" id="flexRadioDefault1" checked>
+        <label class="form-check-label" for="flexRadioDefault1">
+            User
+        </label>
+        <input class="form-check-input" value="Admin" type="radio" name="role" id="flexRadioDefault2" >
+        <label class="form-check-label" for="flexRadioDefault2">
+            Admin
+        </label>
+    </div>
+    <br>
+
+    <!-- Submit button -->
+    <button type="submit" class="btnUpdateUser btn-primary btn-block mb-4">
+        Add
+    </button>
+</form>

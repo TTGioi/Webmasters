@@ -1,0 +1,101 @@
+{{#if successDelete}}
+<div class="alert alert-success" role="alert">
+    Xóa Thành Công
+</div>
+{{/if}}
+<div class="container-fluid">
+    <div class="title row">
+        <div class="col-sm-2 text-center">
+            <h4>Stt</h4>
+        </div>
+        <div class="col-sm-2 text-center">
+            <h4>Name</h4>
+        </div>
+        <div class="col-sm-2 text-center">
+            <h4>Image</h4>
+        </div>
+        <div class="col-sm-2 text-center">
+            <h4>Price</h4>
+        </div>
+        <div class="col-sm-2 text-center">
+            <h4>Color</h4>
+        </div>
+
+        <div class="col-sm-2 text-center">
+            <h4>Action</h4>
+        </div>
+    </div>
+
+
+    {{#each products}}
+    <form action="/actionProduct" method="post">
+        <div class="item row border p-2 mb-2">
+            <div class="col-sm-2 text-center mt-2">
+                <input name="password" type="text" value="{{sum @index 1}}"
+                    style="border: none;text-align: center; background: none;" readonly>
+            </div>
+            <div class="col-sm-2 text-center mt-2">
+                <input name="name" type="text" value="{{name}}"
+                    style="border: none;text-align: center; background: none;" readonly>
+            </div>
+            <div class="col-sm-2 text-center"><img class="img2" src="uploads/{{image}}"></div>
+            <div class="col-sm-2 text-center mt-2">
+                <input name="price" type="text" value="{{price}}"
+                    style="border: none;text-align: center; background: none;" readonly>
+            </div>
+            <div class="col-sm-2 text-center mt-2">
+                <input name="color" type="text" value="{{color}}"
+                    style="border: none;text-align: center; background: none;" readonly>
+            </div>
+
+            <div class="col-sm-2 text-center mt-2">
+                <button type="submit" value="update" name="update" class="btnUpdate btn-primary btn-edit">Edit</button>
+                <button type="button" onclick="showNotification('{{_id}}')" value="delete" name="delete"
+                    class="btnDelete btn-danger btn-delete" data-bs-toggle="modal"
+                    data-bs-target="#myModal">Delete</button>
+            </div>
+            <input name="image" type="text" value="{{image}}" style="display: none;" readonly>
+            <input name="id" type="text" value="{{_id}}" style="display: none;" readonly>
+        </div>
+    </form>
+    {{/each}}
+
+</div>
+<div class="modal" id="myModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xác nhận</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có muốn xóa hay không</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action="/actionProduct" method="post">
+                    <input id="id2" name="idDelete" type="text" style="display: none;" readonly>
+                    <button type="submit" class="btn-primary btn-sm">Ok</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .img2 {
+        width: 80px;
+        height: 50px;
+    }
+
+    .title {
+        border: 2px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<script>
+    function showNotification(id) {
+        document.getElementById("id2").value = id;
+    }
+</script>
